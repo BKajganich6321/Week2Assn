@@ -10,12 +10,13 @@ int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
+double getNum(void);
 
 int main(void) {
     // Variable declarations
     int choice;
     char input[100]; // For safer input handling
-    double radius;
+    double radius ;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -26,8 +27,8 @@ int main(void) {
     // Accept user input for menu selection
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
-        // Parse the input (placeholder)
-        // Example: sscanf_s(input, "%d", &choice);
+        
+        sscanf_s(input, "%d", &choice);
     }
 
     // Use a switch-case to handle menu options
@@ -42,8 +43,10 @@ int main(void) {
         // Call subtract function (placeholder)
         break;
     case 4:
-        radius = scanf_s(input, " % f", &radius);
-        calculateArea(radius);// Call calculate_area function (placeholder)
+        printf("Enter the radius of the circle:");
+        radius = getNum();
+        double area= calculateArea(radius);
+        printf("%lf",area);
         break;
     case 5:
         // Call factorial function (placeholder)
@@ -104,4 +107,18 @@ void displayMenu(void) {
     printf("3. Subtract two numbers\n");
     printf("4. Calculate the area of a circle\n");
     printf("5. Calculate the factorial of a number\n");
+}
+
+double getNum(void)
+{
+    char record[121] = { 0 }; // Buffer to store input string
+    double number = 0.0; // Variable to store the converted number
+    // Prompt the user for input and read the input string
+    fgets(record, 121, stdin);
+    // Attempt to convert the string to a double
+    if (sscanf_s(record, "%lf", &number) != 1) {
+        // If conversion fails, set the number to -1
+        number = -1.0;
+    }
+    return number; // Return the double (or -1 if conversion failed)
 }

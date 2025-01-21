@@ -15,6 +15,7 @@ int main(void) {
     // Variable declarations
     int choice;
     char input[100]; // For safer input handling
+    double radius;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -41,7 +42,8 @@ int main(void) {
         // Call subtract function (placeholder)
         break;
     case 4:
-        // Call calculate_area function (placeholder)
+        radius = scanf_s(input, " % f", &radius);
+        calculateArea(radius);// Call calculate_area function (placeholder)
         break;
     case 5:
         // Call factorial function (placeholder)
@@ -73,10 +75,18 @@ int subtract(int a, int b) {
     return 0; // Replace with actual logic
 }
 
-// Student 4: Implement calculate_area() function
+/*
+* Function: calculateArea
+* Description: This function takes the radius of a circle as a double and find out the area of the circle  
+* Parameters: double radius: radius of the circle
+* Returns: double area : Area of the circle (found out using Pi*(r)^2)
+*/
 double calculateArea(double radius) {
-    // Placeholder
-    return 0.0; // Replace with actual logic
+    
+    double Pi = 3.14159;
+    double area = Pi * radius * radius;
+
+    return area; // Replace with actual logic
 }
 
 // Student 5: Develop factorial() function

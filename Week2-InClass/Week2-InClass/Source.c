@@ -5,11 +5,12 @@
 
 // Function declarations
 void greet(void);                    // Student 1
-int add(int a, int b);               // Student 2
+double add(double a, double b);      // Student 2
 int subtract(int a, int b);          // Student 3
 double calculateArea(double radius); // Student 4
 unsigned long long factorial(int n); // Student 5
 void displayMenu(void);             // Student 6
+double getNum(void);
 
 int main(void) {
     // Variable declarations
@@ -17,6 +18,7 @@ int main(void) {
     char input[100]; // For safer input handling
     double num1;
     double num2;
+    double sum;
 
     // Display a welcome message
     printf("Welcome to the Collaborative Code Management Program!\n");
@@ -28,7 +30,7 @@ int main(void) {
     printf("\nEnter your choice: ");
     if (fgets(input, sizeof(input), stdin) != NULL) {
         // Parse the input (placeholder)
-        // sscanf_s(input, "%d", &choice);
+        sscanf_s(input, "%d", &choice);
     }
 
     // Use a switch-case to handle menu options
@@ -39,7 +41,8 @@ int main(void) {
     case 2:
         num1 = getNum(); // Get user input for num1
         num2 = getNum(); // Get user input for num2
-        add(num1, num2);
+        sum = add(num1, num2);
+        printf("%lf + %lf = %lf", num1, num2, sum);
         break;
     case 3:
         // Call subtract function (placeholder)
@@ -66,8 +69,9 @@ void greet(void) {
 }
 
 // Student 2: Modify add() function to take user input
-int add(int a, int b) {
-    return a + b;
+double add(double a, double b) {
+    double sum = a + b;
+    return sum;
 }
 
 // Student 3: Complete subtract() function
@@ -107,7 +111,7 @@ double getNum(void)
     // Prompt the user for input and read the input string
     fgets(record, 121, stdin);
     // Attempt to convert the string to a double
-    if (sscanf(record, "%lf", &number) != 1) {
+    if (sscanf_s(record, "%lf", &number) != 1) {
         // If conversion fails, set the number to -1
         number = -1.0;
     }
